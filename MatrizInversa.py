@@ -1,6 +1,5 @@
 import numpy as np
 from random import randint
-from time import time
 
 
 def matrizAleatoria():
@@ -147,12 +146,5 @@ while True:
 
 print("La matriz ingresada es:")
 print(M)
-t = time()
-print(np.linalg.inv(M))
-print(f'El tiempo de ejecucion fue de {time() - t}')
-t = time()
 print("La matriz inversa es:")
 print(Gauss().inversa(M))
-print(f'El tiempo de ejecucion fue de {time() - t}')
-
-
