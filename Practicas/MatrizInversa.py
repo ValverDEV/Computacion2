@@ -1,3 +1,8 @@
+#Mario Valverde
+#mv5029@live.com
+
+
+
 import numpy as np
 from random import randint
 
