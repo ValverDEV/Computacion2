@@ -1,9 +1,10 @@
 import numpy as np 
-from sympy import symbols, sympify
+from sympy import symbols, sympify, lambdify
+from time import time
 
 x = symbols('x')
 
-class Biseccion:
+class Raices:
 
     def Biseccion(self, bot, sup, expr, maxIter = 1000):
         """
@@ -34,6 +35,25 @@ class Biseccion:
         return x_r
 
 
+    def exhaustivo(self, inf, sup, expr):
+        a = np.arange(inf,sup, 0.001)
+        f = lambdify(x, expr, 'numpy')
+        b = f(a)
+
+        raizX = []
+        raizY = []
+
+        for i in range(0,len(b)):
+            if round(b[i], 2) == 0:
+                raizX.append(a[i])
+                raizY.append(b[i])
+        if raizX:
+            print('Se estimaron los siguientes valores como posibles raíces:')
+            for i in raizX:
+                print(i)
+        else:
+            print('No se encontraron raíces')
+
 def crearExpresion():
     expr = sympify(input('ingresa la función: '))
     return expr
@@ -41,4 +61,14 @@ def crearExpresion():
 
 
 expr = crearExpresion()
-Biseccion().Biseccion(float(input('límite inferior: ')), float(input('límite superior: ')), expr)
+inferior = float(input('límite inferior: '))
+superior = float(input('límite superior: '))
+t0 = time()
+calc = Raices()
+print('Por método de bisección:')
+calc.Biseccion(inferior, superior, expr)
+print(f'Tiempo de ejecución del método de bisección: {time() - t0}')
+t0 = time()
+print('Por método exhaustivo:')
+calc.exhaustivo(inferior, superior, expr)
+print(f'Tiempo de ejecución del método exhaustivo: {time()- t0}')
