@@ -17,7 +17,7 @@ class PuntosToEcuacion:
         self.puntosX= []
         self.puntosY= []
         self.matriz = 0
-        self.ecuacion = ''
+        self.ecuacion = 0
 
     def Puntos(self):
         numDots = int(input('Cuantos puntos vas a ingresar?\n'))
@@ -46,8 +46,7 @@ class PuntosToEcuacion:
         resultados = GJ.solucion(self.matriz)
         resultados =resultados[::-1]
         for i in range(len(resultados)):
-            self.ecuacion += str(resultados[i]*x**(i))
-            print(self.ecuacion)
+            self.ecuacion += resultados[i]*x**(i)
 
     def CearGrafica(self):
         a = np.linspace(min(self.puntosX), max(self.puntosX), 100)
