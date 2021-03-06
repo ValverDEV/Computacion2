@@ -2,6 +2,7 @@ import numpy as np
 from sympy import symbols, lambdify, init_printing, sympify
 from Gauss import Gauss
 import matplotlib.pyplot as plt
+from time import time
 
 init_printing()
 x = symbols('x')
@@ -61,7 +62,9 @@ class PuntosToEcuacion:
 
 Puntos = PuntosToEcuacion()
 Puntos.Puntos()
+t = time()
 Puntos.CrearMatriz()
 Puntos.ObtenerEcuacion()
 print(Puntos.ecuacion)
+print(f'El tiempo de ejecución fue de {time()- t} segundos')
 Puntos.CearGrafica()
