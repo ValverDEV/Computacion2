@@ -1,6 +1,7 @@
 import numpy as np
 from sympy import symbols, init_printing, expand, lambdify
 import matplotlib.pyplot as plt
+from time import time
 x = symbols('x')
 init_printing()
 
@@ -25,7 +26,7 @@ class NumMethods:
         self.matriz.append(self.puntosX)
         self.matriz.append(self.puntosY)
         self.diferenciasFinitas(len(self.puntosX) - 1)
-        print(self.matriz)
+        # print(self.matriz)
         temp = 1
         expr = self.matriz[1][0]
         for i in range(2, len(self.matriz)):
@@ -37,7 +38,6 @@ class NumMethods:
         print('polinomio calculado:')
         print(expand(expr))
         self.expr += expr
-        self.Grafica()
 
     def diferenciasFinitas(self, actual):
         if actual == 0:
@@ -67,4 +67,7 @@ class NumMethods:
 
 
 NM = NumMethods()
+t = time()
 NM.NewtonInterpol()
+print(f'El tiempo de ejecución fue de {time() - t} segundos')
+NM.Grafica()
