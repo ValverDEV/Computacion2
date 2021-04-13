@@ -1,26 +1,39 @@
+# # Interpolación de Newton
+#
+# Mario Valverde
+
+# %%
+import pandas as pd
 import numpy as np
 from sympy import symbols, init_printing, expand, lambdify
 import matplotlib.pyplot as plt
 from time import time
+from random import randint
+
 x = symbols('x')
-init_printing()
+
+# %% [markdown]
+# Definición de las clases para interpolación
+
+# %%
 
 
 class NumMethods:
 
-    def __init__(self):
-        self.puntosX, self.puntosY = self.llenarPuntos()
+    def __init__(self, Xs, Ys):
+        self.puntosX = Xs
+        self.puntosY = Ys
         self.matriz = []
         self.expr = 0
 
-    def llenarPuntos(self):
-        numPuntos = int(input('Cuántos puntos vas a ingresar? '))
-        x = []
-        y = []
-        for i in range(numPuntos):
-            x.append(float(input('x = ')))
-            y.append(float(input('y = ')))
-        return x, y
+    # def llenarPuntos(self):
+    #     numPuntos = int(input('Cuántos puntos vas a ingresar? '))
+    #     x = []
+    #     y = []
+    #     for i in range(numPuntos):
+    #         x.append(float(input('x = ')))
+    #         y.append(float(input('y = ')))
+    #     return x, y
 
     def NewtonInterpol(self):
         self.matriz.append(self.puntosX)
@@ -65,9 +78,46 @@ class NumMethods:
         plt.scatter(self.puntosX, self.puntosY)
         plt.show()
 
+# %% [markdown]
+# ## Importamos y procesamos los datos
 
-NM = NumMethods()
+
+# %%
+dataset = pd.read_csv(
+    'https://gist.githubusercontent.com/seankross/a412dfbd88b3db70b74b/raw/5f23f993cd87c283ce766e7ac6b329ee7cc2e1d1/mtcars.csv')
+
+
+# %%
+Xs = dataset['mpg'].tolist()
+Ys = dataset['disp'].tolist()
+
+
+# %%
+inputs = int(input('Número de puntos: '))
+nums = [randint(0, len(Xs)) for i in range(inputs)]
+
+
+# %%
+Xs = [Xs[i] for i in nums]
+Ys = [Ys[i] for i in nums]
+
+
+# %%
+print('Datos de las millas por galón:')
+print(Xs)
+print('Datos del desplazamiento de los motores\n', Ys)
+
+# %% [markdown]
+# *Haremos una interpolación de el desplazamiento del motor respescto del rendimiento en millas por galón*
+# %% [markdown]
+# ## Resolvemos la interpolación
+
+# %%
+MN = NumMethods(Xs, Ys)
 t = time()
-NM.NewtonInterpol()
+MN.NewtonInterpol()
 print(f'El tiempo de ejecución fue de {time() - t} segundos')
-NM.Grafica()
+
+
+# %%
+MN.Grafica()
