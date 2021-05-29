@@ -1,4 +1,8 @@
-import pandas as pd
+#Proyecto 2o Parcial
+
+#Mario Valverde
+#Daniela Jiménez
+
 import numpy as np
 from sympy import symbols, init_printing, expand, lambdify
 import matplotlib.pyplot as plt
