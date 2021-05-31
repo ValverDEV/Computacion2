@@ -124,6 +124,17 @@ def main():
 
     return
 
+# def main():
+#     x = [0, 1, 2, 3, 4, 5]
+#     y = [2.1, 7.7, 13.6, 27.2, 40.9, 61.1]
+
+#     deg = int(input('grado: '))
+
+#     NM = NumMethods(x, y)
+#     NM.polinomial(deg)
+#     NM.grafica()
+#     NM.error()
+
 
 if __name__ == '__main__':
     main()
