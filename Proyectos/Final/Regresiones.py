@@ -97,7 +97,7 @@ class NumMethods:
 
         error = error/n
 
-        print(f'\n\nError cuadrático medio: {error}')
+        # print(f'\n\nError cuadrático medio: {error}')
 
         return error
 
