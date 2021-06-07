@@ -1,3 +1,6 @@
+# Autores: Mario Valverde y Daniela Jiménez
+# Contacto: m_valverde@comunidad.unam.mx o dajiva@comunidad.unam.mx
+#Fecha: 7/6/2021
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
@@ -20,6 +23,7 @@ class Autopylot:
 
         while True:
             try:  # lectura de la imagen
+                # Aquí se debe especificar la ruta y nombre general de las imágenes
                 img = mpimg.imread(f'road{img_num}.png')
             except:
                 print("FIN DEL CAMINO")
@@ -140,8 +144,8 @@ class Autopylot:
 
 
 def main():
-    Pylot = Autopylot()
-    Pylot.pylot()
+    Pylot = Autopylot()  # Creamos un objeto de nuestro piloto automático
+    Pylot.pylot()  # Iniciamos la navegación
 
 
 if __name__ == '__main__':
