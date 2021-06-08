@@ -15,8 +15,6 @@ class Autopylot:
 
     def pylot(self):
         img_num = 0
-        # rango de datos que servirá para las gráficas
-        a = np.arange(20, 80, 1)
         # listas con trayectoria y control total
         total_tray = []
         total_control = []
@@ -24,7 +22,7 @@ class Autopylot:
         while True:
             try:  # lectura de la imagen
                 # Aquí se debe especificar la ruta y nombre general de las imágenes
-                img = mpimg.imread(f'road{img_num}.png')
+                img = mpimg.imread(f'./Road2/road{img_num}.png')
             except:
                 print("FIN DEL CAMINO")
                 break
@@ -58,6 +56,10 @@ class Autopylot:
 
             # el control en este intervalo es su derivada
             control = trayectoria.diff(x)
+
+            # obtenemos los máximos para la evaluación
+            max = self.getMax(X1, X2)
+            a = np.arange(0, max, 1)
 
             # evaluamos las posiciones para ver donde se encontrará el auto
             f_tray = lambdify(x, trayectoria, 'numpy')
@@ -116,7 +118,7 @@ class Autopylot:
         pprint(total_control)
 
     def split_lines(self, Xs, Ys):
-        dist = 20  # distancia entre puntos
+        dist = 5  # distancia entre puntos
         # definición de listas para caminos separados
         Xs1 = []
         Ys1 = []
@@ -141,6 +143,11 @@ class Autopylot:
                 Ys1.append(Ys[i])
 
         return Xs1, Ys1, Xs2, Ys2
+
+    def getMax(self, X1, X2):
+        max1 = max(X1)
+        max2 = max(X2)
+        return (max1+max2)/2
 
 
 def main():
