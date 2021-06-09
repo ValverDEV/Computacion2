@@ -1,5 +1,5 @@
 # Autores: Mario Valverde y Daniela Jiménez
-# Contacto: m_valverde@comunidad.unam.mx o dajiva@comunidad.unam.mx
+# Contacto: m_valverde@comunidad.unam.mx y dajiva@comunidad.unam.mx
 #Fecha: 7/6/2021
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt

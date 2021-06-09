@@ -1,5 +1,5 @@
 # Practica Regesion Lineal
-# Mario Valverde
+# Mario Valverde, Daniela Jiménez
 
 from sympy import symbols, lambdify
 import pandas as pd
