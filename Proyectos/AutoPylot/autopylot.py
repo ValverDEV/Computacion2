@@ -22,7 +22,7 @@ class Autopylot:
         while True:
             try:  # lectura de la imagen
                 # Aquí se debe especificar la ruta y nombre general de las imágenes
-                img = mpimg.imread(f'./Road2/road{img_num}.png')
+                img = mpimg.imread(f'./Road1/road{img_num}.png')
             except:
                 print("FIN DEL CAMINO")
                 break
@@ -77,12 +77,16 @@ class Autopylot:
             plt.plot(a, b_tray, color='r')
             plt.plot(a, b_pol1, color='b')
             plt.plot(a, b_pol2, color='b')
+            plt.xlabel('Tiempo (t)')
+            plt.ylabel('Movimiento lateral (izquierda/derecha)')
             plt.title(f'Trayectoria intervalo {img_num}')
             plt.show()
 
             # grafica del control
             plt.plot(a, b_control)
             plt.title(f'Control intervalo {img_num}')
+            plt.xlabel('Tiempo (t)')
+            plt.ylabel('Posición del volante (- derecha + izquierda)')
             plt.show()
 
             # agregamos el trayecto al total
@@ -105,11 +109,15 @@ class Autopylot:
         plt.scatter(c, total_tray)
         plt.plot(c, total_tray)
         plt.title('Trayectoria')
+        plt.xlabel('Tiempo (t)')
+        plt.ylabel('Movimiento lateral (izquierda/derecha)')
         plt.show()
 
         plt.scatter(c, total_control)
         plt.plot(c, total_control)
         plt.title('Control')
+        plt.xlabel('Tiempo (t)')
+        plt.ylabel('Posición del volante (- derecha + izquierda)')
         plt.show()
 
         print('\nLa trayectoria total fue:')
